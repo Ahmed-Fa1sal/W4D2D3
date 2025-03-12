@@ -1,4 +1,7 @@
+<div style="max-width: 500px; margin: auto;">
+
 <h1>Task Management</h1>
+
 
 <!-- Add Task Form -->
 <form [formGroup]="taskForm!" (ngSubmit)="addTask()">
@@ -33,3 +36,4 @@
     <button (click)="deleteTask(task.id??'')">Delete</button>
   </li>
 </ul>
+</div>
