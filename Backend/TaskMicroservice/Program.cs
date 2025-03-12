@@ -9,7 +9,11 @@ builder.Services.AddControllers();
 
 // Add Swagger
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddCors(Options =>
+{
+    Options.AddPolicy("CorsPolicy", builder => builder.AllowAnyOrigin()
+    .AllowAnyHeader().AllowAnyMethod());
+});
 var app = builder.Build();
 
 // Enable Swagger in Development Environment
@@ -19,6 +23,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("CorsPolicy");
 app.UseRouting();
 
 app.MapControllers();
